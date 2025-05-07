@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ambrosia Bake Craft</title>
+  <style>
+    body { font-family: Segoe Script, sans-serif; margin: 0; padding: 0; }
+    header { background-color: #F4C542; padding: 20px; text-align: center; color: white; }
+    header h1 { font-family: 'Segoe Script', cursive; margin: 0; font-size: 2.5em; }
+    nav { display: flex; justify-content: space-around; align-items: center; background: #135D46; padding: 10px; }
+    nav a, nav span { color: white; text-decoration: none; font-weight: bold; cursor: pointer; }
+    .products { display: none; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 20px; }
+    .product { border: 1px solid #ccc; padding: 15px; width: 220px; border-radius: 10px; box-shadow: 0 0 8px #ddd; text-align: center; background: #fff0f5; }
+    .product img { width: 100%; border-radius: 10px; }
+    .btn { margin-top: 10px; padding: 10px; background: #135D46; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    footer { background: #444; color: white; text-align: center; padding: 10px; margin-top: 30px; }
+    #cart { display: none; padding: 20px; text-align: center; }
+    #cart ul { list-style: none; padding: 0; }
+    #cart ul li { margin-bottom: 10px; }
+    .cart-icon { font-size: 1.2em; position: relative; cursor: pointer; }
+    .cart-count {
+      position: absolute;
+      top: -5px;
+      right: -10px;
+      background: red;
+      color: white;
+      font-size: 0.5em;
+      padding: 2px 5px;
+      border-radius: 50%;
+    }
+    .contact-section { padding: 40px; text-align: center; background-color:#135D46; display: none; }
+    .contact-info { display: inline-block; text-align: left; max-width: 300px; margin: 20px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ambrosia Bake Craft</h1>
+  </header>
+
+  <nav>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('cakes')">Cakes</a>
+    <a onclick="showSection('cupcakes')">Cupcakes</a>
+    <a onclick="showSection('best-sellers')">Best Sellers</a>
+    <a onclick="showSection('custom-orders')">Custom Orders</a>
+    <a onclick="showSection('contact')">Contact Us</a>
+    <span class="cart-icon" onclick="toggleCart()">🛒 <span id="cart-count" class="cart-count">0</span></span>
+  </nav>
+<div id="home" class="products">
+
+    <div class="product">
+      <img src="black forest cake.jpg" width="100" height="160"/>
+      <h3>Black Forest Cake</h3>
+      <p>₹799</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Chocolate Cake', 799)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="cheesecake.jpg" alt="Vanilla Cake"  width="100" height="160"/>
+      <h3>Cheese Cake</h3>
+      <p>₹699</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Vanilla Cake', 699)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="red.jpg" alt="Red Velvet Cake" width="100" height="160"/>
+      <h3>Red Velvet Cake</h3>
+      <p>₹899</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Red Velvet Cake', 899)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="ber.jpg" alt="Strawberry Cake" width="100" height="160"/>
+      <h3>Strawberry Cake</h3>
+      <p>₹849</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Strawberry Cake', 849)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="gulab.jpg" alt="gulab" width="100" height="160"/>
+      <h3>Gulab Jamun Cheesecake Shots</h3>
+      <p>₹799</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Black Forest Cake', 799)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="pine.jpg" alt="Pineapple Cake" width="100" height="160"/>
+      <h3>Pineapple Cake</h3>
+      <p>₹759</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Pineapple Cake', 759)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="oreo.jpg" alt="Oreo Cake"width="100" height="160" width="100" height="160" />
+      <h3>Oreo Cake</h3>
+      <p>₹899</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Oreo Cake', 899)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="carrot.jpg" alt="Nutella Cake"width="100" height="160" />
+      <h3>Vegan Carrot Almond Cake</h3>
+      <p>₹999</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Nutella Cake', 999)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="cake1.jpg" alt="Chocolate Cupcake" width="100" height="160"/>
+      <h3>Chocolate Cupcake</h3>
+      <p>₹199</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Chocolate Cupcake', 199)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="cake2.jpg" alt="Vanilla Cupcake" width="100" height="160"/>
+      <h3>Vanilla Cupcake</h3>
+      <p>₹179</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Vanilla Cupcake', 179)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Lemon Cupcake" />
+      <h3>Lemon Cupcake</h3>
+      <p>₹189</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Lemon Cupcake', 189)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Caramel Cupcake" />
+      <h3>Caramel Cupcake</h3>
+      <p>₹209</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Caramel Cupcake', 209)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Berry Cupcake" />
+      <h3>Berry Cupcake</h3>
+      <p>₹199</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Berry Cupcake', 199)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Coffee Cupcake" />
+      <h3>Coffee Cupcake</h3>
+      <p>₹219</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Coffee Cupcake', 219)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Rose Cupcake" />
+      <h3>Rose Cupcake</h3>
+      <p>₹199</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Rose Cupcake', 199)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Mango Cupcake" />
+      <h3>Mango Cupcake</h3>
+      <p>₹189</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Mango Cupcake', 189)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Best Chocolate Cake" />
+      <h3>Best Chocolate Cake</h3>
+      <p>₹799</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Best Chocolate Cake', 799)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Best Red Velvet Cake" />
+      <h3>Best Red Velvet Cake</h3>
+      <p>₹899</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Best Red Velvet Cake', 899)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Best Chocolate Cupcake" />
+      <h3>Best Chocolate Cupcake</h3>
+      <p>₹199</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Best Chocolate Cupcake', 199)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Best Berry Cupcake" />
+      <h3>Best Berry Cupcake</h3>
+      <p>₹199</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Best Berry Cupcake', 199)">Add to Cart</button>
+    </div>
+</div>
+<div id="cakes" class="products">
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Chocolate Cake" />
+      <h3>Chocolate Cake</h3>
+      <p>₹799</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Chocolate Cake', 799)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Vanilla Cake" />
+      <h3>Vanilla Cake</h3>
+      <p>₹699</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Vanilla Cake', 699)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Red Velvet Cake" />
+      <h3>Red Velvet Cake</h3>
+      <p>₹899</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Red Velvet Cake', 899)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Strawberry Cake" />
+      <h3>Strawberry Cake</h3>
+      <p>₹849</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Strawberry Cake', 849)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Black Forest Cake" />
+      <h3>Black Forest Cake</h3>
+      <p>₹799</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Black Forest Cake', 799)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Pineapple Cake" />
+      <h3>Pineapple Cake</h3>
+      <p>₹759</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Pineapple Cake', 759)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Oreo Cake" />
+      <h3>Oreo Cake</h3>
+      <p>₹899</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Oreo Cake', 899)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Nutella Cake" />
+      <h3>Nutella Cake</h3>
+      <p>₹999</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Nutella Cake', 999)">Add to Cart</button>
+    </div>
+</div>
+<div id="cupcakes" class="products">
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Chocolate Cupcake" />
+      <h3>Chocolate Cupcake</h3>
+      <p>₹199</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Chocolate Cupcake', 199)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Vanilla Cupcake" />
+      <h3>Vanilla Cupcake</h3>
+      <p>₹179</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Vanilla Cupcake', 179)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Lemon Cupcake" />
+      <h3>Lemon Cupcake</h3>
+      <p>₹189</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Lemon Cupcake', 189)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Caramel Cupcake" />
+      <h3>Caramel Cupcake</h3>
+      <p>₹209</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Caramel Cupcake', 209)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Berry Cupcake" />
+      <h3>Berry Cupcake</h3>
+      <p>₹199</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Berry Cupcake', 199)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Coffee Cupcake" />
+      <h3>Coffee Cupcake</h3>
+      <p>₹219</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Coffee Cupcake', 219)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Rose Cupcake" />
+      <h3>Rose Cupcake</h3>
+      <p>₹199</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Rose Cupcake', 199)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Mango Cupcake" />
+      <h3>Mango Cupcake</h3>
+      <p>₹189</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Mango Cupcake', 189)">Add to Cart</button>
+    </div>
+</div>
+<div id="best-sellers" class="products">
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Best Chocolate Cake" />
+      <h3>Best Chocolate Cake</h3>
+      <p>₹799</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Best Chocolate Cake', 799)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Best Red Velvet Cake" />
+      <h3>Best Red Velvet Cake</h3>
+      <p>₹899</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Best Red Velvet Cake', 899)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Best Chocolate Cupcake" />
+      <h3>Best Chocolate Cupcake</h3>
+      <p>₹199</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Best Chocolate Cupcake', 199)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300" alt="Best Berry Cupcake" />
+      <h3>Best Berry Cupcake</h3>
+      <p>₹199</p>
+      <p>⭐⭐⭐⭐☆</p>
+      <button class="btn" onclick="addToCart('Best Berry Cupcake', 199)">Add to Cart</button>
+    </div>
+</div>
+
+  <div id="custom-orders" class="contact-section">
+    <h2>Custom Orders</h2>
+    <p>Want something unique? Contact us to place custom cake or cupcake orders for birthdays, weddings, and special occasions!</p>
+    <p>Email: custom@customambrosiabakery.com | Phone: +91-9999999999</p>
+  </div>
+
+  <div id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+      <p>Email: support@ambrosiabake.com</p>
+      <p>Phone: +91-9999999999</p>
+      <p>Address: #101 Bakery Lane, Bangalore, India</p>
+    </div>
+  </div>
+
+  <div id="cart">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <p><strong>Total: ₹<span id="cart-total">0</span></strong></p>
+  </div>
+
+  <footer>
+    <p>© 2025 Ambrosia Bake Craft. All rights reserved.</p>
+  </footer>
+
+  <script>
+    let cart = [];
+    function showSection(section) {
+      document.querySelectorAll('.products, .contact-section, #cart').forEach(el => el.style.display = 'none');
+      const sec = document.getElementById(section);
+      if (sec) sec.style.display = 'flex';
+    }
+
+    function toggleCart() {
+      document.querySelectorAll('.products, .contact-section').forEach(el => el.style.display = 'none');
+      const cartEl = document.getElementById('cart');
+      cartEl.style.display = cartEl.style.display === 'none' ? 'block' : 'none';
+      updateCart();
+    }
+
+    function addToCart(item, price) {
+      cart.push({ name: item, price });
+      document.getElementById('cart-count').innerText = cart.length;
+      updateCart();
+    }
+
+    function updateCart() {
+      const list = document.getElementById('cart-items');
+      const totalEl = document.getElementById('cart-total');
+      list.innerHTML = '';
+      let total = 0;
+      cart.forEach(({ name, price }) => {
+        const li = document.createElement('li');
+        li.textContent = ${name} - ₹${price};
+        list.appendChild(li);
+        total += price;
+      });
+      totalEl.innerText = total;
+    }
+
+    window.onload = () => showSection('home');
+  </script>
+</body>
+</html>
